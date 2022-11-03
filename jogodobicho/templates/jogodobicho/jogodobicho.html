@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jogo do Bicho</title>
+
+    <h1>CONCORRA AO SORTEIO DO JOGO DO BICHO</h1>
+    <h2>Escolha 2 DOIS ANIMAIS: /  (Aperte confirmar quando concluir a sua escolha)</h2>
+
+<style>label { display: block; }</style>
+<script type="text/javascript">
+(function(){
+	"use strict";
+
+	var marcados = 0;
+	var verifyCheckeds = function($checks) {
+		if( marcados>=2 ) {
+			loop($checks, function($element) {
+				$element.disabled = $element.checked ? '' : 'disabled';
+			});
+		} else {
+			loop($checks, function($element) {
+				$element.disabled = '';
+			});
+		}
+	};
+	var loop = function($elements, cb) {
+		var max = $elements.length;
+		while(max--) {
+			cb($elements[max]);
+		}
+	}
+	var count = function($element) {
+		return $element.checked ? marcados + 1 : marcados - 1;
+	}
+	window.onload = function(){
+		var $checks = document.querySelectorAll('input[type="checkbox"]');
+		loop($checks, function($element) {
+			$element.onclick = function(){
+				marcados = count(this);
+				verifyCheckeds($checks);
+			}
+			if($element.checked) marcados = marcados + 1;
+		});
+		verifyCheckeds($checks);
+	}
+}());
+</script>
+</head>
+
+<body>
+	<div class="row">
+		<div class="col-12">
+			<div class="contact-form-area">
+				<form action="{% url 'cria_aposta' %}" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="row">
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Avestruz" /> Avestruz (1, 2, 3, 4)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Aguia" /> Águia (5,6,7,8)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Burro" /> Burro (9,10,11,12)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Borboleta" /> Borboleta (13,14,15,16)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Cachorro" /> Cachorro (17,18,19,20)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Cabra" /> Cabra (21,22,23,24)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Carneiro" /> Carneiro (25,26,27,28)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Camelo" /> Camelo (29,30,31,32)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Cobra" /> Cobra (33,34,35,36)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Coelho" /> Coelho (37,38,39,40)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Cavalo" /> Cavalo (41,42,43,44)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Elefante" /> Elefante (45,46,47,48)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Galo" /> Galo (49,50,51,52)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Gato" /> Gato (53,54,55,56)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Jacare" /> Jacaré (57,58,59,60)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Leao" /> Leão (61,62,63,64)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Macaco" /> Macaco (65,66,67,68)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Porco" /> Porco (69,70,71,72)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Pavao" /> Pavão (73,74,75,76)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Peru" /> Peru (77,78,79,80)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Touro" /> Touro (81,82,83,84)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Tigre" /> Tigre (85,86,87,88)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Urso" />  Urso (89,90,91,92)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Veado" />  Veado (93,94,95,96)</label>
+						</div>
+						<div class="col-12 col-lg-12">
+							<label><input type="checkbox" class="form-control" name="animal" value="Vaca" />  Vaca (97,98,99,00)</label>
+						</div>
+						<br>
+						<label for="">Selecione o concurso que deseja concorrer:</label>
+						<select class="form-control form-control-sm" name="concursoselecionado">
+							<option>Selecione</option>
+							{% if task %}
+								{% for item in task %}
+									<option value="{{ item.concurso }}">{{ item.concurso }}</option>
+								{% endfor %}
+							 {% else %}
+							 {% endif %}
+						 </select>
+						<br>
+						<br>
+						<div class="col-12 text-center">
+							<button class="btn delicious-btn mt-30" type="submit">Apostar</button>
+						</div>
+					</div>
+				</form>		
+			</div>
+		</div>				
+	</div>
+	<br>
+    <br>
+
+</body>
+</html>

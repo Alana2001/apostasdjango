@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Casa de Apostas</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+        <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" c
+        rossorigin="anonymous">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'navbar-top-fixed.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}" /></noscript> 
+	</head>
+
+
+    <body class="is-preload"></body>
+
+      <!-- Wrapper -->
+			<div id="wrapper" class="divided">
+            
+                <!-- Banner -->
+                    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Sistema de Apostas</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+                            
+							<div class="collapse navbar-collapse" id="navbarCollapse">
+                              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                                  
+                                {% if user.is_authenticated %}
+
+								<li class="nav-item">
+									<a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
+								</li>
+      
+								<li class="nav-item">
+								  <a class="nav-link" href="/logout">Logout</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" href="#">|	   Bem-Vindo, {{user.username}}</a>
+								</li>
+						  
+								{% else %}
+						  
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'login' %}">Login</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" href="{% url 'register' %}">Registrar</a>
+								</li>
+
+								{% endif %}
+                                             
+                              </ul>
+						</div>
+					</nav>  
+
+          {% load crispy_forms_tags %}
+
+          <!--Login--> 
+          <div class="container py-5">
+            <h1>Login</h1>
+            <form method="POST">
+              {% csrf_token %}
+              {{ login_form|crispy }}
+              <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+            <p class="text-center">Você já possui uma conta? <a href="/register">Crie uma Conta</a>.</p>
+          </div>
+
+      </div>
+
+        <!-- Scripts -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/scrollex.min.js' %}"></script>
+        <script src="{% static 'js/sjquery.scrolly.min.js' %}"></script>
+        <script src="{% static 'js/browser.min.js' %}"></script>
+        <script src="{% static 'js/bbreakpoints.min.js' %}"></script>
+        <script src="{% static 'js/util.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+
+              <script  rel="stylesheet" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+        <!-- Note: Only needed for demo purposes. Delete for production sites. -->
+        <script src="{% static 'js/demo.js' %}"></script>
+
+  </body>
+</html>
